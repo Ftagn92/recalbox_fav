@@ -45,8 +45,8 @@ def main():
     except:
         remote = 'local'
     str_MD5 = ''
-    if ((hashing.find('hash') == -1) or (hashing.find('nohash') == -1)):
-        print("Wrng hashing parameter :  only accept hash or nohash")
+    if ((hashing.find('hash') == -1) and (hashing.find('nohash') == -1)):
+        print("Wrong hashing parameter :  only accept hash or nohash")
         exit()
     #Quelles sections on traite ?
     backup_favorite = (sections.find('favorite') > -1)
