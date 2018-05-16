@@ -92,48 +92,52 @@ def main():
                                 nom_jeu = cherche_nom.text
                         for element in jeu:
                             #2eme passage pour les données à sauvegarder
-                            if element.tag == 'favorite':
-                                fav_yes_no = element.text
-                                if fav_yes_no == 'true':
-                                    print("- favorite")
+                            if backup_favorite == True:
+                                if element.tag == 'favorite':
+                                    fav_yes_no = element.text
+                                    if fav_yes_no == 'true':
+                                        print("- favorite")
+                                        if MD5_OK == False:
+                                            #On ne calcule le hash qu'une fois
+                                            str_MD5 = calcul_MD5(path_roms+'/'+chemin+'/'+nom_jeu, hashing)
+                                            MD5_OK = True
+                                        with open('./'+chemin+"/favoris.txt", "a") as myfile:
+                                            myfile.write(str_MD5+'\t'+nom_jeu+'\n')
+                                        backup = True
+                            if backup_hidden == True:
+                                if element.tag == 'hidden':
+                                    hidden = element.text
+                                    if hidden == 'true':
+                                        print("- hidden")
+                                        if MD5_OK == False:
+                                            #On ne calcule le hash qu'une fois
+                                            str_MD5 = calcul_MD5(path_roms+'/'+chemin+'/'+nom_jeu, hashing)
+                                            MD5_OK = True
+                                        with open('./'+chemin+"/hidden.txt", "a") as myfile:
+                                            myfile.write(str_MD5+'\t'+nom_jeu+'\n')
+                                        backup = True
+                            if backup_playcount == True:
+                                if element.tag == 'playcount':
+                                    playcount = element.text
+                                    print("- playcount: "+str(playcount))
                                     if MD5_OK == False:
                                         #On ne calcule le hash qu'une fois
                                         str_MD5 = calcul_MD5(path_roms+'/'+chemin+'/'+nom_jeu, hashing)
                                         MD5_OK = True
-                                    with open('./'+chemin+"/favoris.txt", "a") as myfile:
-                                        myfile.write(str_MD5+'\t'+nom_jeu+'\n')
+                                    with open('./'+chemin+"/playcount.txt", "a") as myfile:
+                                        myfile.write(str_MD5+'\t'+playcount+'\t'+nom_jeu+'\n')
                                     backup = True
-                            if element.tag == 'hidden':
-                                hidden = element.text
-                                if hidden == 'true':
-                                    print("- hidden")
+                            if backup_lastplayed == True:
+                                if element.tag == 'lastplayed':
+                                    lastplayed = element.text
+                                    print("- lastplayed: "+str(lastplayed))
                                     if MD5_OK == False:
                                         #On ne calcule le hash qu'une fois
                                         str_MD5 = calcul_MD5(path_roms+'/'+chemin+'/'+nom_jeu, hashing)
                                         MD5_OK = True
-                                    with open('./'+chemin+"/hidden.txt", "a") as myfile:
-                                        myfile.write(str_MD5+'\t'+nom_jeu+'\n')
+                                    with open('./'+chemin+"/lastplayed.txt", "a") as myfile:
+                                        myfile.write(str_MD5+'\t'+lastplayed+'\t'+nom_jeu+'\n')
                                     backup = True
-                            if element.tag == 'playcount':
-                                playcount = element.text
-                                print("- playcount: "+str(playcount))
-                                if MD5_OK == False:
-                                    #On ne calcule le hash qu'une fois
-                                    str_MD5 = calcul_MD5(path_roms+'/'+chemin+'/'+nom_jeu, hashing)
-                                    MD5_OK = True
-                                with open('./'+chemin+"/playcount.txt", "a") as myfile:
-                                    myfile.write(str_MD5+'\t'+playcount+'\t'+nom_jeu+'\n')
-                                backup = True
-                            if element.tag == 'lastplayed':
-                                lastplayed = element.text
-                                print("- lastplayed: "+str(lastplayed))
-                                if MD5_OK == False:
-                                    #On ne calcule le hash qu'une fois
-                                    str_MD5 = calcul_MD5(path_roms+'/'+chemin+'/'+nom_jeu, hashing)
-                                    MD5_OK = True
-                                with open('./'+chemin+"/lastplayed.txt", "a") as myfile:
-                                    myfile.write(str_MD5+'\t'+lastplayed+'\t'+nom_jeu+'\n')
-                                backup = True
                         if backup == True:
                             print(str_MD5+'\t'+nom_jeu)
                             print('-'*32)
