@@ -60,4 +60,5 @@ Le programme a été testé sous Windows et sur la recalbox 4.1 (linux) avec les
 Exemple, sur la recalbox vous avez mis le script dans le SHARE dans un répertoire 'mon_backup'
 
 cd /recalbox/share/mon_backup
+
 python recalbox_fav.py ../roms backup lastplayed-hidden hash
