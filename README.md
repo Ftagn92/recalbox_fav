@@ -35,9 +35,13 @@ Enfin vous devez indiquer si vous souhaitez ou non calculer le hash MD5 de chaqu
 Exemple :
 
 python recalbox_fav.py \\recalbox\share\roms backup favorite_hidden_lastplayed_playcount hash
+
 python recalbox_fav.py \\recalbox\share\roms backup lastplayedhiddenplaycount hash
+
 python recalbox_fav.py \\recalbox\share\roms backup favoriteonsenfouhiddentralalalastplayed nohash
+
 python recalbox_fav.py \\recalbox\share\roms restore favorite nohash
+
 python recalbox_fav.py \\recalbox\share\roms backup hiddenOSEF hash
 
 :p
