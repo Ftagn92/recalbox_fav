@@ -5,17 +5,20 @@ Comme beaucoup d'entre vous, j'aime bien faire et défaire ma borne, tester des 
 
 Donc voilà comment ça fonctionne :
 Vous créez un répertoire temporaire sur votre pc, vous y mettez le programme
-Ensuite vous l'appelez avec la commande :
 
-python recalbox_fav.py \\recalbox\share\roms backup
+Puis vous tapez la commande :
 
-Il va vous créer un sous répertoire pour chacun des systèmes, et créer dedans un fichier favoris.txt avec les jeux que vous aviez sélectionné dans chaque gamelist
+python recalbox_fav.py \\recalbox\share\roms backup (suivie des paramètres de votre choix)
+
+Il va vous créer un sous répertoire pour chacun des systèmes, et créer dedans s'il y a lieu de le faire, un fichier favoris.txt, lastplayed.txt, playcount.txt et hidden.txt avec les jeux que vous aviez sélectionné dans chaque gamelist
 
 Ensuite vous bidouillez votre recalbox, rasez tout, etc, bref...
 
 Pour restaurer vos favoris, vous lancez la commande :
 
-python recalbox_fav.py \\recalbox\share\roms restore
+python recalbox_fav.py \\recalbox\share\roms restore (suivie des paramètres de votre choix)
+
+Par exemple pour les favoris :
 
 Le programme lit chaque gamelist distante si vous avez un fichier favoris.txt en local, et compare les deux.
 Ensuite il ajoute ou modifie la section <favorite> de chaque jeu qu'il retrouve, et que vous aviez mis en favoris dans la gamelist
@@ -25,9 +28,7 @@ Je précise en local parce que mon programme n'écrit rien sur le share, vous po
 
 Ensuite il ne vous reste plus qu'à copier chaque gamelist.xml créée dans le répertoire correspondant de votre recalbox à la place de l'ancienne, et redémarrer emulationstation pour voir vos favoris chéris :)
 
-EDIT : 
-
-Le programme fait désormais la même chose avec  les playcount, les hidden, les lastplayed, tout ces status à la fois ou individuellement
+Le programme peut faire la même chose avec  les playcount, les hidden, les lastplayed, tout ces status à la fois ou individuellement
 Il suffit d'indiquer les sections à sauvegarder dans une chaine de caractère unique (syntaxe libre, je fais un parsing dans la chaîne)
 
 Enfin vous devez indiquer si vous souhaitez ou non calculer le hash MD5 de chaque rom pour l'identifier, avec le paramètre hash ou nohash
