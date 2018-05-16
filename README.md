@@ -25,4 +25,35 @@ Je précise en local parce que mon programme n'écrit rien sur le share, vous po
 
 Ensuite il ne vous reste plus qu'à copier chaque gamelist.xml créée dans le répertoire correspondant de votre recalbox à la place de l'ancienne, et redémarrer emulationstation pour voir vos favoris chéris :)
 
-Bientôt il fera pareil pour les playcount, les hidden, peut-être aussi les lastplayed, tout ces status à la fois ou individuellement
+EDIT : 
+
+Le programme fait désormais la même chose avec  les playcount, les hidden, les lastplayed, tout ces status à la fois ou individuellement
+Il suffit d'indiquer les sections à sauvegarder dans une chaine de caractère unique (syntaxe libre, je fais un parsing dans la chaîne)
+
+Enfin vous devez indiquer si vous souhaitez ou non calculer le hash MD5 de chaque rom pour l'identifier, avec le paramètre hash ou nohash
+
+Exemple :
+
+python recalbox_fav.py \\recalbox\share\roms backup favorite_hidden_lastplayed_playcount hash
+python recalbox_fav.py \\recalbox\share\roms backup lastplayedhiddenplaycount hash
+python recalbox_fav.py \\recalbox\share\roms backup favoriteonsenfouhiddentralalalastplayed nohash
+python recalbox_fav.py \\recalbox\share\roms restore favorite nohash
+python recalbox_fav.py \\recalbox\share\roms backup hiddenOSEF hash
+
+:p
+Last but not least, vous pouvez ajouter à vos risques et péril le paramètre REMOTE (en majuscule) pour qu'il écrase REELLEMENT vos gamelists directement lors d'une restauration sur la recalbox
+
+Exemple : 
+
+python recalbox_fav.py \\recalbox\share\roms restore hidden hash REMOTE
+
+Rassurez-vous vos gamelists sont juste renommées avec un timestamp avant d'être remplacées par les nouvelles, vous pourrez revenir en arrière indéfiniement
+
+N'hésitez pas à me faire remonter bugs, suggestions ou corrections
+
+Le programme a été testé sous Windows et sur la recalbox 4.1 (linux) avec les mêmes syntaxe
+
+Exemple, sur la recalbox vous avez mis le script dans le SHARE dans un répertoire 'mon_backup'
+
+cd /recalbox/share/mon_backup
+python recalbox_fav.py ../roms backup lastplayed-hidden hash
