@@ -296,7 +296,7 @@ def main():
                             if restore == True:
                                 print(str_MD5+'\t'+nom_jeu)
                                 print('-'*32)
-                        tree.write(open('./'+chemin+'/gamelist.xml', 'wb'))
+                        tree.write(open('./'+chemin+'/gamelist.xml', 'wb'),encoding="UTF-8",xml_declaration=True)
                         if remote == 'REMOTE':
                             ts = time.time()
                             st = datetime.datetime.fromtimestamp(ts).strftime('_%Y%m%d_%H%M%S_')
